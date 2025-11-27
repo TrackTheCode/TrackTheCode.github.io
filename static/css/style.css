@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    
+    user-select: none;
+}
+
+body {
+    background: linear-gradient(135deg, #000030, #00008B, #00BFFF);
+    animation: wave 5s ease infinite;
+}
+
+@keyframes wave {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 90% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.topbar {
+    top: 0;
+    width: 100%;
+    padding-top: 10px;
+    position: fixed;
+    z-index: 1000; 
+    
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding-bottom: 10px;
+}
+
+.topbarButton-ac {
+    /* From https://css.glass */
+    /* Huge THANKS! */
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 999px; /* round :3 */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    border: 1px solid rgba(255, 255, 255, 0.40);
+    
+    padding-left: 20px;
+    padding-right: 20px;
+    
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+    cursor: pointer;
+} .topbarButton-inac {
+    padding-left: 20px;
+    padding-right: 20px;
+    
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.box {
+    /* From https://css.glass */
+    /* Huge THANKS! */
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 999px; /* round :3 */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    border: 1px solid rgba(255, 255, 255, 0.40);
+}
+
+.boxContent {
+    padding-left: 20px;
+    padding-right: 20px;
+    
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+span, p, h1, a {
+    font-family: 'Fredoka', sans-serif;
+    color: white;
+} a {
+    text-decoration: none;
+}
+
+.shadowLeft {
+    text-shadow: -4px 4px 4px #000000;
+} .shadowRight {
+    text-shadow: 4px 4px 4px #000000;
+} .shadowDown {
+    text-shadow: 0px 4px 4px #000000;
+}
+
+.skewLeft {
+    transform: skewY(5deg);
+} .skewRight {
+    transform: skewY(-5deg);
+}
+
+.flexSpaced {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+img {
+    border-radius: 10px;
+}
+
+/* ANIMATIONS */
+/* FLOATING UP AND DOWN */
+.floatingUpAnimation {
+    animation: floatingUp 3s ease-in-out infinite;
+} .floatingDownAnimation {
+    animation: floatingDown 3s ease-in-out infinite;
+}
+
+@keyframes floatingUp {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+} @keyframes floatingDown {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(15px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Desktop Styles (Default) */
+.hamburger-menu {
+    display: none; /* Hide hamburger on desktop */
+}
+
+#navbar-links {
+    display: flex; /* Ensure navigation links are a flex row on desktop */
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0; /* Reset margin */
+}
+
+/* --- Mobile Responsiveness (max-width: 768px) --- */
+@media (max-width: 768px) {
+    /* Hide the default navigation links */
+    #navbar-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 89px; /* Adjust based on topbar height */
+        left: 0;
+        background: rgba(255, 255, 255, 0.15) !important;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        padding-bottom: 10px;
+        z-index: 999;
+    }
+
+    /* Show navigation links when active */
+    #navbar-links.active {
+        display: flex;
+    }
+
+    /* Topbar adjustments for mobile */
+    .topbar .boxContent {
+        flex-direction: row; /* Keep title and hamburger in a row */
+        justify-content: space-between; /* Space out title and hamburger */
+        align-items: center;
+        padding: 10px 15px; /* Adjust padding for mobile */
+    }
+    
+    .topbar .right { /* This is now #navbar-links, but keeping old class for other styles */
+        flex-direction: column; /* Stack buttons vertically inside the menu */
+        width: 100%;
+        text-align: center;
+        margin-top: 0; /* Reset margin */
+    }
+
+    .topbar .right a {
+        width: 90% !important; /* Override inline width */
+        margin-bottom: 5px; /* Spacing between stacked buttons */
+        font-size: 16px !important; /* Smaller font size */
+        display: block; /* Make links block level for full width */
+    }
+    
+    .topbar .left {
+        width: auto; /* Allow title to take its natural width */
+        text-align: left;
+    }
+    
+    .topbar .left span {
+        font-size: 20px !important; /* Adjust header title size */
+    }
+    
+    /* Hamburger Menu styles */
+    .hamburger-menu {
+        display: flex; /* Show hamburger on mobile */
+        flex-direction: column;
+        justify-content: space-around;
+        width: 30px;
+        height: 25px;
+        cursor: pointer;
+    }
+
+    .hamburger-menu .bar {
+        width: 100%;
+        height: 3px;
+        background-color: white;
+        border-radius: 2px;
+    }
+
+    /* General content sections */
+    .flexSpaced {
+        flex-direction: column !important; /* Stack content sections vertically */
+        align-items: flex-start !important; /* Align text to left */
+    }
+
+    /* Override inline margins and font sizes for content divs and paragraphs */
+    /* Target divs with inline margin-top, margin-left, margin-right */
+    div[style*="margin-top"][style*="margin-left"][style*="margin-right"] {
+        margin-top: 40px !important; /* Reduce large top margins */
+        margin-left: 10px !important; /* Smaller side margins */
+        margin-right: 10px !important;
+        padding: 0 !important;
+    }
+
+    /* Target p elements with inline font-size */
+    p[style*="font-size"] {
+        font-size: 16px !important; /* Smaller default font size for paragraphs */
+    }
+    
+    /* Target p elements with inline text-align: right */
+    p[style*="text-align: right"] {
+        text-align: left !important; /* Align right-aligned text to left */
+    }
+
+    /* Adjust the "Go back up?" button */
+    a[href="#1"][class*="box"] {
+        padding: 8px 15px !important; /* Adjust padding */
+        font-size: 16px !important;
+        display: inline-block; /* Keep it inline-block or block as needed */
+    }
+    
+    .scrollPrompt {
+        margin-top: -80px;
+    }
+    
+    .computer {
+        display: none;
+    }
+    
+    html, body {
+        padding-top: 80px;
+        background-size: 500% 900% !important;
+    }
+} @media (min-width: 769px) {
+    .mobile {
+        display: none;
+    }
+    
+    html, body {
+        padding-top: 0px;
+        background-size: 400% 900% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .avatarContributors {
+        width: 100%;
+    }
+} @media (min-width: 769px) {
+    .avatarContributors {
+        width: 350px;
+    } .dave {
+        width: 450px;
+    }
+}
